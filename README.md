@@ -27,7 +27,6 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header & Navigation -->
     <header class="bg-gray-800/80 backdrop-blur-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-white">Kevin J. Sandke</a>
@@ -39,14 +38,12 @@
                 <a href="#education" class="hover:text-sky-400 transition-colors">Education</a>
                 <a href="#contact" class="bg-sky-500 text-white px-4 py-2 rounded-md hover:bg-sky-600 transition-colors">Contact</a>
             </div>
-            <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </nav>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
             <a href="#about" class="block py-2 hover:text-sky-400">About</a>
             <a href="#skills" class="block py-2 hover:text-sky-400">Skills</a>
@@ -59,7 +56,6 @@
 
     <main class="container mx-auto px-6 py-12">
 
-        <!-- Homepage / Hero Section -->
         <section id="home" class="text-center min-h-[60vh] flex flex-col justify-center items-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
                 Kevin J. Sandke
@@ -76,7 +72,6 @@
             </div>
         </section>
 
-        <!-- About Me / Career Goals -->
         <section id="about" class="py-20">
             <h2 class="section-title">About Me</h2>
             <div class="max-w-4xl mx-auto text-lg text-center leading-relaxed">
@@ -89,7 +84,6 @@
             </div>
         </section>
 
-        <!-- Technical Skills -->
         <section id="skills" class="py-20 bg-gray-900 rounded-2xl">
             <h2 class="section-title">Technical Skills</h2>
             <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-gray-300">
@@ -153,7 +147,6 @@
             </div>
         </section>
 
-        <!-- Portfolio / Projects -->
         <section id="projects" class="py-20">
             <h2 class="section-title">Projects & Experience</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -191,7 +184,6 @@
             </div>
         </section>
 
-        <!-- Course Project Blog -->
         <section id="blog" class="py-20 bg-gray-900 rounded-2xl">
             <h2 class="section-title">Course Project Deep Dive</h2>
             <div class="max-w-4xl mx-auto card bg-gray-800">
@@ -221,11 +213,51 @@
                         <h4 class="font-bold text-lg text-white">Risks & Mitigation</h4>
                         <p>A key challenge was learning new tools like Docker and REST APIs within the project timeline. I mitigated this by relying on official documentation and utilizing LLMs for rapid learning. To avoid scope creep, I adhered strictly to the MVP outlined in the project proposal. To manage long training times, I was methodical in dataset selection and training efficiency.</p>
                     </div>
+
+                    <div>
+                        <h4 class="font-bold text-lg text-white mt-6">Project Development Journey</h4>
+                        <div class="space-y-4 mt-4 pl-4 border-l-2 border-sky-900">
+                            <div>
+                                [cite_start]<h5 class="font-semibold text-white">Week 3 (6/5/25): Project Inception [cite: 1, 2, 3, 4, 5, 6]</h5>
+                                [cite_start]<p class="text-gray-400">Brainstormed project ideas and decided to build an MLOps pipeline for a recommender system[cite: 3, 4]. [cite_start]The main goal for the week was to submit the proposal, complete the website, and begin researching models and algorithms[cite: 6].</p>
+                            </div>
+                             <div>
+                                [cite_start]<h5 class="font-semibold text-white">Week 4 (6/12/25): Data Acquisition [cite: 11, 12, 13, 16, 17, 18]</h5>
+                                [cite_start]<p class="text-gray-400">Selected the MovieLens dataset, which contains 32 million ratings for 87,000 movies[cite: 13, 14]. [cite_start]An AI assistant (Gemini) was helpful in brainstorming and finding the dataset[cite: 24, 25]. [cite_start]The plan for the following week was to preprocess the data and create a training script[cite: 17, 18].</p>
+                            </div>
+                            <div>
+                                [cite_start]<h5 class="font-semibold text-white">Week 5 (6/19/25): Preprocessing and Website Completion [cite: 26, 27, 28, 30, 31]</h5>
+                                [cite_start]<p class="text-gray-400">Began preprocessing the MovieLens dataset, cleaning up formatting and splitting it into 80% training and 20% test data[cite: 28, 30]. [cite_start]Also finalized and completed the project website this week[cite: 31]. [cite_start]I realized the need to account for more debugging time than originally planned[cite: 39].</p>
+                            </div>
+                            <div>
+                                [cite_start]<h5 class="font-semibold text-white">Week 6 (6/26/25): Model Training [cite: 41, 42, 43, 45, 46]</h5>
+                                [cite_start]<p class="text-gray-400">Successfully trained the recommendation model and found its anecdotal performance to be reasonable[cite: 43, 44]. [cite_start]The next step is to begin containerizing the model using Docker, anticipating a learning curve with the new tool[cite: 46, 48].</p>
+                            </div>
+                             <div>
+                                [cite_start]<h5 class="font-semibold text-white">Week 9 (7/17/25): API Development & Containerization [cite: 52, 53, 54, 56, 58]</h5>
+                                [cite_start]<p class="text-gray-400">Created APIs using FastAPI to allow interaction with the model[cite: 54]. [cite_start]Work on containerizing the entire pipeline continued[cite: 56]. [cite_start]The immediate goal was to finish the front-end using Gradio and finalize the containerization for deployment[cite: 58].</p>
+                            </div>
+                            <div>
+                                [cite_start]<h5 class="font-semibold text-white">Week 10 (7/24/25): CI/CD Pipeline Implementation [cite: 64, 65, 66, 67, 69]</h5>
+                                [cite_start]<p class="text-gray-400">Fully implemented and debugged a CI/CD pipeline using GitHub Actions[cite: 66, 67]. [cite_start]Each commit now triggers linting and testing, and a successful push deploys a Docker container[cite: 68, 69]. [cite_start]Started work on the frontend and began researching cloud providers for hosting[cite: 66, 72].</p>
+                            </div>
+                             <div>
+                                [cite_start]<h5 class="font-semibold text-white">Week 11 (7/31/25): Frontend & Model Tuning [cite: 79, 80, 81, 87, 88, 91]</h5>
+                                [cite_start]<p class="text-gray-400">Implemented a simple frontend using Gradio and refined the GitHub automations for continuous integration[cite: 81, 82, 83]. [cite_start]Upon testing, I discovered the model was slightly overfitted and began hyperparameter tuning[cite: 87, 88]. [cite_start]This was hampered by issues with training time and enabling CUDA, which became a key troubleshooting focus[cite: 89, 91].</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-lg text-white mt-6">Final Project Report</h4>
+                        <div class="mt-4 p-4 border-l-2 border-sky-900">
+                             <p class="text-gray-400">[The final project report can be pasted here once it is complete. This section will provide a comprehensive overview of the project's outcomes, challenges, and learnings.]</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education -->
         <section id="education" class="py-20">
             <h2 class="section-title">Education</h2>
             <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -246,7 +278,6 @@
             </div>
         </section>
 
-        <!-- Contact Information -->
         <section id="contact" class="py-20 text-center">
             <h2 class="section-title">Get In Touch</h2>
             <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-8">
@@ -260,8 +291,7 @@
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
                     <span class="sr-only">GitHub</span>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"> <!-- Replace # with your LinkedIn URL -->
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors"> <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     <span class="sr-only">LinkedIn</span>
                 </a>
             </div>
@@ -269,7 +299,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 border-t border-gray-700">
         <div class="container mx-auto px-6 py-4 text-center text-gray-400">
             <p>&copy; <span id="current-year"></span> Kevin J. Sandke. All Rights Reserved.</p>
