@@ -23,6 +23,19 @@
         .card {
             @apply bg-gray-800 p-6 rounded-xl shadow-lg transition-transform duration-300 hover:transform hover:-translate-y-2;
         }
+        /* Custom style for the final report to add some spacing between paragraphs */
+        .report-content p {
+            @apply mb-4;
+        }
+        .report-content h5 {
+            @apply font-semibold text-white text-lg mt-4 mb-2;
+        }
+         .report-content h6 {
+            @apply font-semibold text-white mt-3 mb-1;
+        }
+        .report-content ul {
+            @apply list-disc list-inside space-y-2 pl-4;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -250,8 +263,48 @@
                     
                     <div>
                         <h4 class="font-bold text-lg text-white mt-6">Final Project Report</h4>
-                        <div class="mt-4 p-4 border-l-2 border-sky-900">
-                             <p class="text-gray-400">[The final project report can be pasted here once it is complete. This section will provide a comprehensive overview of the project's outcomes, challenges, and learnings.]</p>
+                        <div class="mt-4 p-4 border-l-2 border-sky-900 report-content">
+                            <h5>Intro</h5>
+                            <p>The goal of this project was to create a recommender system that incorporates industry-standard Machine Learning Operations (MLOps) practices and tools. Specifically, a movie recommendation system that utilizes machine learning to understand users' movie tastes, creating accurate and novel recommendations. The MLOps aspect of the project is the CI/CD Pipeline as well as the containerization of the tool.</p>
+                            
+                            <h5>Background</h5>
+                            <p>I based this project on a very popular app called Letterboxd. It is a social media platform where users can document, rate, and review movies that they have watched. It also provides them with recommendations based on their movie taste. This project is important to me because I want to learn what goes into machine learning in a more professional setting. I have done a bit of machine learning in both the machine learning and the artificial intelligence courses during this program. I had a solid understanding of the basics, but I wanted to use this project to gain a deeper understanding. Learning about many of the tools that are used in production in ML environments was the biggest goal and inspiration I had behind this project. Machine learning has been one of my favorite topics during the program, and I want to set myself up to have the skills to become a Machine Learning Engineer after I graduate.</p>
+                            
+                            <h5>Methodology</h5>
+                            <p>My approach to the project was methodical. After deciding on this specific project. I consulted with Google Gemini to come up with a plan and to understand what types of tools are used in the industry. It helped me come up with a list of all of the necessary tools. I began by researching datasets that would work for my use. I ended up deciding on the MovieLens 32M dataset. This dataset contains over 32 million ratings from 87,000 movies and 200,000 unique users. I then did some exploratory analysis with the data to figure out which features were going to be the most important to use when training. The next step was to clean the dataset to prepare it for training. My project has the ability to be used with multiple models. I have two preprocessing scripts: one for the standard ALS model and the other for my neural network-based model. In the ALS model processing, I extract data like year, unique movies, and genres. The neural network preprocessing requires a bit more complex feature extraction. It builds label encoders for users/movies/genres, it creates movie feature vectors, applies encodings, and saves more compact joblib datasets. To train the ALS model, a user-item interaction matrix is built. Then Optuna is run to tune the hyperparameters while logging results to MLflow. It then retrains the best model and saves the model, as well as the user/movie maps and the interaction matrix. Training the neural collaborative filtering model is more complex. The script loads the preprocessed neural datasets from joblib. It then tunes the model using the embeddings that were previously created using Optuna again. Then, after that, it trains the model with mixed precision and early stopping while logging all results to MLflow. Then it saves the best PyTorch weights and encoders to be used as the model. At this point, I created a simple inference script for both models. Now is where I reached the point where I was working with tools and concepts that I had not worked with previously. First, I needed to create an API that was able to retrieve inferences based on user input. After consulting popular API documentation, I settled on using FastAPI. I created a FastAPI app to load and register the models. There are a few endpoints: user provides personalized recommendations based on their taste, batch receives a set of recommendations based on genre, and similar receives recommendations based on an input of movies, and then it gives recommendations similar to those movies. For the inference of each model, different tools are used. The neural model uses PyTorch, and the ALS model uses implicit. Next, I created a simple Docker container for the FastAPI service. It installs the proper build tools, installs dependencies, copies the repository, creates a data/model directory, sets the correct Python path, and then starts Uvicorn to serve the app. With all of that done, I was able to start working on GitHub Actions, which are what make up my continuous integration pipeline. I created a GitHub workflow file that does three things upon each new push to the repository. It was designed to do 3 things. First, it runs (build-and-test), it installs all the requirements, then runs ruff lint and pytest on the code to make sure that everything is functioning properly. If that succeeds, it builds and pushes the Docker image with specific tags. The last job is to deploy the image to AWS ECS. I did not end up having the time to fully implement this. Lastly, I wanted to create a simple front-end that would be easier to interact with than the API server itself. I used Gradio, an AI/ML tool designed for prototyping interfaces.</p>
+                            
+                            <h5>Results</h5>
+                            <h6>Method</h6>
+                            <p>I have learned multiple new tools and skills throughout this project. Taking the time to learn new tools was a steep task. My ability to consult documentation for different tools was one of the skills that I feel improved the most from this. Having to read documentation from Docker, PyTorch, MLflow, FastAPI, Gradio, Optuna, GitHub Actions, and AWS ECS. This skill, in particular, has felt like the most valuable skill that I have learned from this project. It applies to all parts of software engineering. As the project progressed, the documentation became easier to read, and I was a lot faster at finding whatever I was looking for. As for the specific tools that I used, I feel that I now have a solid understanding of PyTorch, MLflow, and Optuna. I have used TensorFlow and TensorBoard previously, which are very similar to PyTorch and MLflow. I have used Optuna in my ML class. Getting to use these three in a larger project-based setting has helped deepen my understanding of a lot of the core machine learning principles. I am glad that I got some exposure to the rest of the tools, but I feel like I need to continue working on this project to feel like I fully understand them. Especially the CI/CD tools, I feel that they are all extremely important in a professional setting, and continuing to work on this project will deepen my understanding of them.</p>
+                            <h6>Assessment</h6>
+                            <p>My project assessments were split into 5 parts with several subparts within each.</p>
+                            <p><strong>The Functionality of the Recommender System:</strong> The system generates relevant recommendations with both the NCF and ALS models. The model training process is scripted and fully reproducible. Metrics are calculated and reported using MLflow. All criteria for this section were met.</p>
+                            <p><strong>Implementation of MLOps Practices:</strong> The code is fully versioned in GitHub; the models and data are not versioned using DVC. The recommender is fully containerized and accessible via a containerized API. The CI pipeline is fully integrated; each push is linted, tested, and built/pushed into a Docker container. The API can monitor the model, but retraining is not documented. Two of the criteria in this section were not fully met. I was not able to implement a retraining automation as it was slightly out of scope due to not being able to set up AWS.</p>
+                            <p><strong>Code Quality and Documentation:</strong> The Python code is very well organized, readable, and heavily documented. The project setup and usage are clearly stated in the README file. All criteria in this section were met.</p>
+                            <p><strong>Project Management and Reporting:</strong> Weekly updates were provided on Piazza and subsequently added to the portfolio website. The final report is comprehensive; it covers the functionality of the project, the tools used, the skills learned, and discusses the results. All deliverables are accessible.</p>
+                            <p><strong>Meeting Learning Objectives:</strong> The project has met all of the learning objectives, including the ones from the mid-semester project report. The recommender system is properly functioning, the core MLOps pipeline has been implemented, the basic CI has been integrated, and the CD has been conceptualized. The project documentation and reporting have been updated and maintained. The project is complete as outlined in section 4 of the project proposal.</p>
+
+                            <h5>Discussion/Reflection</h5>
+                            <p>I met almost all of my goals. My motivation for this project allowed me to make significant progress quickly, especially at the start. Working ahead of schedule and using momentum helped me reach my early goals faster. I had an MVP within only 5 or 6 weeks. One of the strategies that helped me progress was immediately asking AI for a crash course in every new technology that I came across. For example, when I had to create the GitHub actions, I asked for a brief overview of the core principles of creating effective tests and linting in GitHub. Then I consulted the documentation while developing it to fill in gaps as I came across them. I repeated this process with all of the technology that I used. I felt that it was an extremely effective strategy to not feel overwhelmed by new technology. The main goal that I did not meet was deploying the project to a cloud platform. I got to the point where I decided on AWS ECS, and I even wrote the GitHub Action to deploy each container push. That goal was overzealous. Looking back, I had so many new skills that I would need to learn for this project, and AWS could be an entire project all on its own. As for what I ended up building, I am really happy with my project results as they are. I made what I set out to make. I am quite proud of how well I was able to familiarize myself with so many new tools and technologies throughout this.</p>
+
+                            <h5>Conclusion</h5>
+                            <p>The number 1 thing that this project has done for me is it has given me a lot more confidence in my ability as a developer. I struggle a lot with impostor syndrome, and the current state of the tech industry is depressing as a new grad CS student. This project has helped alleviate some of those feelings for me. Using novel tools and trying to follow industry standards took a great deal of effort, and it has helped me feel like I could be a strong developer and be an asset to a team. As for what to do next, I would like to get this project to a more polished state. Creating a more professional front-end and hosting it via AWS would be some next steps to take. Since I am graduating at the end of this semester, I will absolutely take some time to bring this project across the finish line to a production-ready product and not a tech demo.</p>
+
+                            <h5>References</h5>
+                            <ul>
+                                <li>Docker Documentation</li>
+                                <li>FastAPI Documentation</li>
+                                <li>GitHub Actions Documentation</li>
+                                <li>GitHub Project Repository</li>
+                                <li>Google Gemini 2.5 Pro</li>
+                                <li>Gradio Documentation</li>
+                                <li>MLflow Documentation</li>
+                                <li>MovieLens Dataset 32M Grouplens</li>
+                                <li>Optuna Documentation</li>
+                                <li>PyTorch Documentation</li>
+                                <li>scikit-learn Documentation</li>
+                                <li>Uvicorn Documentation</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
